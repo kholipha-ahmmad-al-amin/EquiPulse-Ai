@@ -1,0 +1,9 @@
+# EquiPulse AI Cursor Rules
+# Used to configure custom styling rules and enforce high-contrast CSS mappings.
+
+* Always use Tailwind CSS utility classes.
+* Enforce high-contrast accessibility (WCAG 2.1 AA) when generating components.
+* Prioritize Framer Motion for gesture-based swipe controls.
+* Use localized components (i18n aware) instead of hardcoded strings.
+* Maintain strict TypeScript boundaries for all components and API handlers.
+* For visual charts, do NOT pull in heavy libraries (like Chart.js). Use inline SVGs styled with Tailwind CSS to ensure 100/100 PageSpeed scores.

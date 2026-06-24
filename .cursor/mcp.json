@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "equipulse-pos": {
+      "command": "node",
+      "args": [
+        "./mcp/equipulse-pos-mcp/index.js"
+      ]
+    }
+  }
+}

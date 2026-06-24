@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EquiPulse AI - Demo Accounts Toolkit</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --ink: #f8fafc;
+      --ink-soft: #94a3b8;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 { margin-bottom: 10px; }
+    p.subtitle { color: var(--ink-soft); margin-bottom: 40px; text-align: center; }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 24px;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .card {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      color: var(--accent);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .field {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      background: rgba(0,0,0,0.2);
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+    .field-label {
+      font-size: 0.75rem;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .field-value {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .copy-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .copy-btn:hover {
+      background: var(--accent-hover);
+    }
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #10b981;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      z-index: 1000;
+    }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>EquiPulse AI - Demo Toolkit</h1>
+  <p class="subtitle">প্রেজেন্টেশনের সময় প্রোফাইল সেটআপের জন্য ডেমো ইনফরমেশন</p>
+
+  <div class="grid">
+    <!-- Profile 1 -->
+    <div class="card">
+      <h2>১. রহিম স্টোর (Grocery)</h2>
+      <div class="field">
+        <div><div class="field-label">Email (Judge Login)</div><div class="field-value">grocery@equipulse.com</div></div>
+        <button class="copy-btn" onclick="copyText('grocery@equipulse.com')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Password</div><div class="field-value">demo123</div></div>
+        <button class="copy-btn" onclick="copyText('demo123')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Store Name</div><div class="field-value">Rahim General Store</div></div>
+        <button class="copy-btn" onclick="copyText('Rahim General Store')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Location</div><div class="field-value">Mirpur 10, Dhaka</div></div>
+        <button class="copy-btn" onclick="copyText('Mirpur 10, Dhaka')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Owner Name</div><div class="field-value">Md. Abdur Rahim</div></div>
+        <button class="copy-btn" onclick="copyText('Md. Abdur Rahim')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Owner NID</div><div class="field-value">19823456789012</div></div>
+        <button class="copy-btn" onclick="copyText('19823456789012')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Trade License No.</div><div class="field-value">TRD-2026-88291</div></div>
+        <button class="copy-btn" onclick="copyText('TRD-2026-88291')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">BIN / TIN</div><div class="field-value">BIN-88291044</div></div>
+        <button class="copy-btn" onclick="copyText('BIN-88291044')">Copy</button>
+      </div>
+    </div>
+
+    <!-- Profile 2 -->
+    <div class="card">
+      <h2>২. মা ফার্মেসি (Pharmacy)</h2>
+      <div class="field">
+        <div><div class="field-label">Email (Judge Login)</div><div class="field-value">pharmacy@equipulse.com</div></div>
+        <button class="copy-btn" onclick="copyText('pharmacy@equipulse.com')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Password</div><div class="field-value">demo123</div></div>
+        <button class="copy-btn" onclick="copyText('demo123')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Store Name</div><div class="field-value">Maa Pharmacy</div></div>
+        <button class="copy-btn" onclick="copyText('Maa Pharmacy')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Location</div><div class="field-value">Dhanmondi 27, Dhaka</div></div>
+        <button class="copy-btn" onclick="copyText('Dhanmondi 27, Dhaka')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Owner Name</div><div class="field-value">Rafiqul Islam</div></div>
+        <button class="copy-btn" onclick="copyText('Rafiqul Islam')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Owner NID</div><div class="field-value">19754567890123</div></div>
+        <button class="copy-btn" onclick="copyText('19754567890123')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Trade License No.</div><div class="field-value">TRD-2026-93847</div></div>
+        <button class="copy-btn" onclick="copyText('TRD-2026-93847')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">BIN / TIN</div><div class="field-value">TIN-93847291</div></div>
+        <button class="copy-btn" onclick="copyText('TIN-93847291')">Copy</button>
+      </div>
+    </div>
+
+    <!-- Profile 3 -->
+    <div class="card">
+      <h2>৩. স্টাইল জোন (Fashion)</h2>
+      <div class="field">
+        <div><div class="field-label">Email (Judge Login)</div><div class="field-value">fashion@equipulse.com</div></div>
+        <button class="copy-btn" onclick="copyText('fashion@equipulse.com')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Password</div><div class="field-value">demo123</div></div>
+        <button class="copy-btn" onclick="copyText('demo123')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Store Name</div><div class="field-value">Style Zone Fashion</div></div>
+        <button class="copy-btn" onclick="copyText('Style Zone Fashion')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Location</div><div class="field-value">Baily Road, Dhaka</div></div>
+        <button class="copy-btn" onclick="copyText('Baily Road, Dhaka')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Owner Name</div><div class="field-value">Sumaiya Akter</div></div>
+        <button class="copy-btn" onclick="copyText('Sumaiya Akter')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Owner NID</div><div class="field-value">19921234567890</div></div>
+        <button class="copy-btn" onclick="copyText('19921234567890')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Trade License No.</div><div class="field-value">TRD-2026-44582</div></div>
+        <button class="copy-btn" onclick="copyText('TRD-2026-44582')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">BIN / TIN</div><div class="field-value">BIN-44582910</div></div>
+        <button class="copy-btn" onclick="copyText('BIN-44582910')">Copy</button>
+      </div>
+    </div>
+
+    <!-- Profile 4 -->
+    <div class="card">
+      <h2>৪. ইলেকট্রনিক্স গ্যালারি (Electronics)</h2>
+      <div class="field">
+        <div><div class="field-label">Email (Judge Login)</div><div class="field-value">electronics@equipulse.com</div></div>
+        <button class="copy-btn" onclick="copyText('electronics@equipulse.com')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Password</div><div class="field-value">demo123</div></div>
+        <button class="copy-btn" onclick="copyText('demo123')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Store Name</div><div class="field-value">Electronics Gallery</div></div>
+        <button class="copy-btn" onclick="copyText('Electronics Gallery')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Location</div><div class="field-value">Multiplan Center, Elephant Road</div></div>
+        <button class="copy-btn" onclick="copyText('Multiplan Center, Elephant Road')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Owner Name</div><div class="field-value">Tariqul Hasan</div></div>
+        <button class="copy-btn" onclick="copyText('Tariqul Hasan')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Owner NID</div><div class="field-value">19889876543210</div></div>
+        <button class="copy-btn" onclick="copyText('19889876543210')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Trade License No.</div><div class="field-value">TRD-2026-55112</div></div>
+        <button class="copy-btn" onclick="copyText('TRD-2026-55112')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">BIN / TIN</div><div class="field-value">BIN-55112345</div></div>
+        <button class="copy-btn" onclick="copyText('BIN-55112345')">Copy</button>
+      </div>
+    </div>
+
+    <!-- Profile 5 -->
+    <div class="card">
+      <h2>৫. রফিক হার্ডওয়্যার (Hardware)</h2>
+      <div class="field">
+        <div><div class="field-label">Email (Judge Login)</div><div class="field-value">hardware@equipulse.com</div></div>
+        <button class="copy-btn" onclick="copyText('hardware@equipulse.com')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Password</div><div class="field-value">demo123</div></div>
+        <button class="copy-btn" onclick="copyText('demo123')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Store Name</div><div class="field-value">Rafiq Hardware</div></div>
+        <button class="copy-btn" onclick="copyText('Rafiq Hardware')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Location</div><div class="field-value">Nawabpur, Dhaka</div></div>
+        <button class="copy-btn" onclick="copyText('Nawabpur, Dhaka')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Owner Name</div><div class="field-value">Abdul Khalek</div></div>
+        <button class="copy-btn" onclick="copyText('Abdul Khalek')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Owner NID</div><div class="field-value">19702345678912</div></div>
+        <button class="copy-btn" onclick="copyText('19702345678912')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">Trade License No.</div><div class="field-value">TRD-2026-11223</div></div>
+        <button class="copy-btn" onclick="copyText('TRD-2026-11223')">Copy</button>
+      </div>
+      <div class="field">
+        <div><div class="field-label">BIN / TIN</div><div class="field-value">BIN-11223344</div></div>
+        <button class="copy-btn" onclick="copyText('BIN-11223344')">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Copied to clipboard!</div>
+
+  <script>
+    let toastTimeout;
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.textContent = `Copied: ${text}`;
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

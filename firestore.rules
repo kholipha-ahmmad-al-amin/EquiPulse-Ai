@@ -1,0 +1,107 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function getTenantId() {
+      let path = /databases/$(database)/documents/storeProfiles/$(request.auth.uid);
+      let profile = exists(path) ? get(path) : null;
+      return (profile != null && 'tenantId' in profile.data) ? profile.data.tenantId : request.auth.uid;
+    }
+
+    function hasTenantAccess(tenantId) {
+      return signedIn() && (
+        request.auth.uid == tenantId || 
+        (getTenantId() == tenantId && exists(/databases/$(database)/documents/users/$(tenantId)/staff/$(request.auth.token.email)))
+      );
+    }
+
+    match /leaderboard/{entryId} {
+      allow get, list: if true;
+      allow write: if false;
+    }
+
+    // Allow staff to find their tenant across all store collections via a collectionGroup query
+    match /{path=**}/staff/{staffId} {
+      allow read: if signedIn() && request.auth.token.email != null && resource.data.email == request.auth.token.email;
+    }
+
+    match /users/{tenantId} {
+      allow read: if hasTenantAccess(tenantId);
+      allow write: if hasTenantAccess(tenantId) && (request.auth.token.role == 'owner' || request.auth.uid == tenantId);
+
+      // Enterprise explicit sub-collections rather than wildcards
+      match /registers/{txnId} {
+        allow read, create, update: if hasTenantAccess(tenantId);
+        allow delete: if hasTenantAccess(tenantId) && (request.auth.token.role == 'owner' || request.auth.uid == tenantId);
+      }
+      
+      match /inventory/{itemId} {
+        allow read: if hasTenantAccess(tenantId);
+        allow write: if hasTenantAccess(tenantId);
+      }
+      
+      match /credits/{ledgerId} {
+        allow read, write: if hasTenantAccess(tenantId);
+      }
+
+      match /credit_reminders/{reminderId} {
+        allow read, create: if hasTenantAccess(tenantId);
+        allow update, delete: if false;
+      }
+
+      match /decisions/{decisionId} {
+        allow read, create: if hasTenantAccess(tenantId);
+        allow update, delete: if false;
+      }
+
+      match /p2p_events/{eventId} {
+        allow read, create: if hasTenantAccess(tenantId);
+        allow update, delete: if false;
+      }
+
+      match /expenses/{expenseId} {
+        allow read, write: if hasTenantAccess(tenantId);
+      }
+
+      match /staff/{staffId} {
+        allow read: if hasTenantAccess(tenantId);
+        allow create, update, delete: if signedIn() && request.auth.uid == tenantId;
+      }
+
+      match /customers/{customerId} {
+        allow read, write: if hasTenantAccess(tenantId);
+      }
+    }
+
+    match /storeProfiles/{profileId} {
+      allow read: if signedIn() && (
+        request.auth.uid == profileId ||
+        getTenantId() == profileId ||
+        hasTenantAccess(profileId)
+      );
+      allow write: if hasTenantAccess(profileId);
+    }
+
+    match /webhook_queue/{queueId} {
+      allow create: if signedIn()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.status == 'pending';
+      allow read: if signedIn() && resource.data.userId == request.auth.uid;
+      allow update, delete: if false;
+    }
+
+    match /event_stream/{eventId} {
+      allow create: if signedIn()
+        && request.resource.data.userId == request.auth.uid;
+      allow read, update, delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

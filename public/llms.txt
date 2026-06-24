@@ -1,0 +1,13 @@
+# EquiPulse AI 
+
+EquiPulse AI is an offline-first, AI-powered SME POS and ERP system built for cooperative ecosystems.
+
+## Context
+- Domain: POS, ERP, SME
+- Technologies: React, Vite, TypeScript, Firebase, DuckDB WASM, Gemini API, Ollama
+
+## App Architecture
+- Local-first architecture using IndexedDB persistence via Firebase.
+- DuckDB WASM handles complex CSV ingestion and parsing in-browser.
+- Gemini 1.5 Flash provides multimodal analytics, OCR, and forecasting.
+- Local Ollama fallback for strict offline areas.

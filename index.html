@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en-BD">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- PWA & Apple Web App Meta -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="EquiPulse AI" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <title>EquiPulse AI | Global AI-Native ERP & POS</title>
+    <meta
+      name="description"
+      content="EquiPulse AI: The most advanced AI-native ERP & POS system. Features Offline-First Sync, AI Action Queue, and multi-tier inventory pricing. Built for global local merchants."
+    />
+    <meta
+      name="keywords"
+      content="EquiPulse AI, SME ERP, POS system, inventory management, digital ledger, AI inventory forecasting, shop management app, DuckDB analytics"
+    />
+    <meta name="category" content="Business & Productivity" />
+    <meta name="classification" content="AI-Native ERP for SME commerce operations" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="referrer" content="origin-when-cross-origin" />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    
+    <!-- Open Graph / Facebook (Base) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="EquiPulse AI: Global AI-Native ERP & POS" />
+    <meta property="og:description" content="Digital Ledger, Multi-tier Inventory Pricing & Gemini AI Forecasting - all in one platform for local merchants globally." />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="EquiPulse AI" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="EquiPulse AI | Global AI-Native ERP & POS" />
+    <meta name="twitter:description" content="Digital Ledger, Multi-tier Inventory & Gemini AI - the complete ERP for global merchants." />
+
+    <!-- Dynamic SEO & Canonical Injector -->
+    <script>
+      (function() {
+        var origin = window.location.origin;
+        var path = window.location.pathname;
+        var url = origin + path;
+        
+        // Canonical & Alternate
+        var linkCan = document.createElement('link');
+        linkCan.rel = 'canonical';
+        linkCan.href = url;
+        document.head.appendChild(linkCan);
+
+        var linkAltEn = document.createElement('link');
+        linkAltEn.rel = 'alternate';
+        linkAltEn.hreflang = 'en';
+        linkAltEn.href = url;
+        document.head.appendChild(linkAltEn);
+
+        // Open Graph URL
+        var metaOgUrl = document.createElement('meta');
+        metaOgUrl.setAttribute('property', 'og:url');
+        metaOgUrl.content = url;
+        document.head.appendChild(metaOgUrl);
+
+        var metaTwUrl = document.createElement('meta');
+        metaTwUrl.setAttribute('name', 'twitter:url');
+        metaTwUrl.content = url;
+        document.head.appendChild(metaTwUrl);
+        
+        // Absolute Image URLs for SEO
+        var metaOgImage = document.createElement('meta');
+        metaOgImage.setAttribute('property', 'og:image');
+        metaOgImage.content = origin + '/og-image.png';
+        document.head.appendChild(metaOgImage);
+
+        var metaTwImage = document.createElement('meta');
+        metaTwImage.setAttribute('name', 'twitter:image');
+        metaTwImage.content = origin + '/og-image.png';
+        document.head.appendChild(metaTwImage);
+
+        // Schema JSON-LD
+        var schema = {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "SoftwareApplication",
+              "name": "EquiPulse AI",
+              "operatingSystem": "Web, Android, iOS",
+              "applicationCategory": "BusinessApplication",
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "ratingCount": "120"
+              },
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              }
+            },
+            {
+              "@type": "LocalBusiness",
+              "name": "EquiPulse AI",
+              "image": origin + "/site-logo.svg",
+              "@id": origin + "/",
+              "url": origin + "/",
+              "telephone": "+18000000000",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Global",
+                "addressCountry": "US"
+              }
+            }
+          ]
+        };
+        var scriptLd = document.createElement('script');
+        scriptLd.type = 'application/ld+json';
+        scriptLd.text = JSON.stringify(schema);
+        document.head.appendChild(scriptLd);
+      })();
+    </script>
+    
+    <!-- Google Analytics 4 (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-528285907"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-528285907');
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

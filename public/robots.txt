@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://smepulse.equisaas-bd.com/sitemap.xml
